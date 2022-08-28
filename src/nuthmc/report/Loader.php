@@ -33,7 +33,7 @@ class Loader extends PluginBase implements Listener {
             if($sender instanceof Player) {
                 $this->reportForm($sender);
             } else {
-          $sender->sendMessage("command can extend in-game only");
+          $sender->sendMessage("§l§b»§r§c This command can be used in-game only!");
         }
         break;
     }
@@ -51,23 +51,23 @@ class Loader extends PluginBase implements Listener {
         
         $form = new CustomForm(function (Player $player, array $data = null){
             if($data === null) {
-              $player->sendMessage(TE::RED."Report Failed");
+              $player->sendMessage(TE::RED."§l§b»§r§c Report Failed! Try again!");
                 return true;
             }
             $web=new Webhook($this->getConfig()->get("api"));
             $msg=new Message();
             $e=new Embed();
             $index=$data[1];
-            $e->setTitle("Player Report");
+            $e->setTitle("§l§ePlayer Report");
             $e->setDescription("{$player->getName()} reported {$this->players[$player->getName()][$index]}  [Reason: {$data[2]}]");
             $msg->addEmbed($e);
             $web->send($msg);
-            $player->sendMessage(TE::GREEN."Report was sent");
+            $player->sendMessage(TE::GREEN."§l§b»§r§a Report was successfully sent");
         });
-        $form->setTitle("Reporter");
-        $form->addLabel("Report");
-        $form->addDropdown("Select a player", $this->players[$player->getName()]);
-        $form->addInput("Reason", "Type a reason", "Hacking");
+        $form->setTitle("§l§dBlossom Report System");
+        $form->addLabel("§c");
+        $form->addDropdown("§eSelect a player", $this->players[$player->getName()]);
+        $form->addInput("§3Reason", "§cType a reason", "Hacking");
         $form->sendToPlayer($player);
         return $form;
     }
