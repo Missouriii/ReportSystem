@@ -3,7 +3,7 @@ build-by-default: true
 branches:
 - pm4
 - main
-projects:
+projects: 
   ReportSystem:
     path: ""
     logo: icon.png
