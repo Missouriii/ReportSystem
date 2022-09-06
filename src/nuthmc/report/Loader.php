@@ -29,7 +29,6 @@ class Loader extends PluginBase implements Listener {
     public function onCommand(CommandSender $sender, Command $cmd, string $label, array $args):bool {
         switch($cmd->getName()) {
         case "report": 
-            
             if($sender instanceof Player) {
                 $this->reportForm($sender);
             } else {
@@ -43,10 +42,12 @@ class Loader extends PluginBase implements Listener {
   
     public function reportForm($player) {
         $list = [];
-        foreach($this->getServer()->getOnlinePlayers() as $p) {
+        foreach($this->getServer()->getOnlinePlayers() as $p){
             $list[] = $p->getName();
+            if ($player->getName() !== $p->getName())
+                $list[] = $p->getName();
+            }
         }
-        
         $this->players[$player->getName()] = $list;
         
         $form = new CustomForm(function (Player $player, array $data = null){
