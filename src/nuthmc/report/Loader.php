@@ -58,7 +58,7 @@ class Loader extends PluginBase implements Listener {
             $msg=new Message();
             $e=new Embed();
             $index=$data[1];
-            $e->setTitle("§l§ePlayer Report");
+            $e->setTitle("Player Report");
             $e->setDescription("{$player->getName()} reported {$this->players[$player->getName()][$index]}  [Reason: {$data[2]}]");
             $msg->addEmbed($e);
             $web->send($msg);
