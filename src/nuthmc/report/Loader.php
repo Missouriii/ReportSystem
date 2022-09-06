@@ -46,7 +46,6 @@ class Loader extends PluginBase implements Listener {
             $list[] = $p->getName();
             if ($player->getName() !== $p->getName())
                 $list[] = $p->getName();
-            }
         }
         $this->players[$player->getName()] = $list;
         
